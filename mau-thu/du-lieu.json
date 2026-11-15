@@ -1,8 +1,7 @@
 {
   "ten": "Nhà mẫu thử",
-  "ngay": "2026-11-15 17:16",
+  "ngay": "2026-11-15 18:00",
   "don_vi": "m",
-  "truc": "Y lên",
   "tags": [
     {
       "ten": "A. WALL"
@@ -56,6 +55,38 @@
     "tam_giac": 48,
     "canh": 48
   },
+  "truc": {
+    "x": [
+      {
+        "ten": "1",
+        "v": 0.1
+      },
+      {
+        "ten": "2",
+        "v": 4.1
+      },
+      {
+        "ten": "3",
+        "v": 8.1
+      }
+    ],
+    "y": [
+
+    ]
+  },
+  "cao_do": [
+    {
+      "ten": "Tầng trệt",
+      "z": 0.0,
+      "chu": "±0.000"
+    },
+    {
+      "ten": "Lầu 1",
+      "z": 3.1,
+      "chu": "+3.100"
+    }
+  ],
+  "z0": 0.0,
   "kem_thep": false,
   "nen": "meshopt",
   "ghi_chu": "Bản nháp do AI lập — kỹ sư/KTS có chứng chỉ hành nghề kiểm tra và ký trước khi sử dụng."
