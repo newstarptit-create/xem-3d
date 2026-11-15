@@ -1,0 +1,60 @@
+{
+  "ten": "nha mai nhat",
+  "ngay": "2026-11-15 18:07",
+  "don_vi": "m",
+  "tags": [
+    {
+      "ten": "A. CURTAIN WALL"
+    },
+    {
+      "ten": "A. FINISHING WALL"
+    },
+    {
+      "ten": "I. COVERING"
+    },
+    {
+      "ten": "S. MEMBER"
+    },
+    {
+      "ten": "S. STEEL COLUMN"
+    },
+    {
+      "ten": "m_cladding"
+    },
+    {
+      "ten": "m_hss"
+    },
+    {
+      "ten": "m_metal"
+    }
+  ],
+  "scenes": [
+
+  ],
+  "hop": {
+    "min": [
+      -6.157,
+      0.3,
+      -12.181
+    ],
+    "max": [
+      4.981,
+      3.72,
+      0.157
+    ]
+  },
+  "so_lieu": {
+    "nut": 923,
+    "mesh": 443,
+    "vat_lieu": 5,
+    "anh": 2,
+    "tam_giac": 10296,
+    "canh": 8304
+  },
+  "truc": null,
+  "cao_do": null,
+  "z0": 0.0,
+  "kem_thep": false,
+  "nen": "meshopt",
+  "ghi_chu": "Bản nháp do AI lập — kỹ sư/KTS có chứng chỉ hành nghề kiểm tra và ký trước khi sử dụng."
+}
