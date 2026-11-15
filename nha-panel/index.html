@@ -1,0 +1,119 @@
+<!doctype html>
+<!-- Trang xem 3D cho khách (AI building — nút "Xuất web 3D", Chủ tịch 15/11/2026). Mã: web3d.js (đóng gói từ web3d-cong-cu/src).
+     Bản nháp do AI lập — kỹ sư/KTS có chứng chỉ hành nghề kiểm tra và ký trước khi sử dụng. -->
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<title>NHA PANEL — xem 3D</title>
+<meta name="description" content="Mô hình 3D xem trên điện thoại, máy tính: xoay, cắt, đo">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://newstarptit-create.github.io/xem-3d/nha-panel/">
+<meta property="og:title" content="NHA PANEL — xem 3D">
+<meta property="og:description" content="Mô hình 3D xem trên điện thoại, máy tính: xoay, cắt, đo">
+<meta property="og:image" content="https://newstarptit-create.github.io/xem-3d/nha-panel/xem-truoc.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root { --nen: #eef1f5; --chu: #1f2329; --phu: #5c6470; --vien: #d5dae1; --nhan: #e8590c; --the: rgba(255,255,255,.96); }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--nen); color: var(--chu); font: 15px/1.35 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; overflow: hidden; }
+  #khung { position: fixed; inset: 0; touch-action: none; }
+  #khung canvas { display: block; width: 100%; height: 100%; }
+  header { position: fixed; top: 0; left: 0; right: 0; padding: 10px 16px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; pointer-events: none; }
+  #cty { display: flex; align-items: center; gap: 6px; background: var(--the); padding: 4px 10px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,.12); font-size: 12.5px; max-width: 86vw; pointer-events: auto; }
+  #cty img { height: 22px; max-width: 80px; object-fit: contain; }
+  #cty-ten { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #cty-dt { color: var(--nhan); font-weight: 600; text-decoration: none; white-space: nowrap; }
+  body.co-cty #thong-tin, body.co-cty #nhan-do, body.co-cty #goi-y { top: 90px; }
+  #ten { font-weight: 600; font-size: 16px; background: var(--the); padding: 6px 12px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,.12); max-width: 70vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  nav { position: fixed; left: 50%; bottom: max(12px, env(safe-area-inset-bottom)); transform: translateX(-50%); display: flex; gap: 4px; background: var(--the); padding: 5px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.18); }
+  nav button { white-space: nowrap; border: 0; background: transparent; color: var(--chu); font: inherit; font-size: 13px; padding: 7px 10px; border-radius: 8px; min-width: 52px; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  nav button svg { width: 22px; height: 22px; }
+  nav button.bat { background: var(--nhan); color: #fff; }
+  .bang { position: fixed; right: 16px; bottom: 84px; width: min(320px, calc(100vw - 32px)); max-height: 55vh; overflow: auto; background: var(--the); border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,.2); padding: 10px 12px; }
+  .bang h3 { margin: 0 0 6px; font-size: 14px; color: var(--phu); font-weight: 600; }
+  #ds-tag label { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--vien); }
+  #ds-tag input { width: 20px; height: 20px; }
+  #ds-scene, #ds-tang { display: flex; flex-wrap: wrap; gap: 6px; }
+  #ds-tang:not(:empty) { margin-bottom: 12px; }
+  #ds-tang button.bat { background: var(--nhan); border-color: var(--nhan); color: #fff; }
+  #ds-scene button, #ds-tang button, #hop-lai { border: 1px solid var(--vien); background: #fff; border-radius: 8px; padding: 8px 10px; font: inherit; font-size: 14px; cursor: pointer; }
+  #hop { left: 16px; right: auto; padding: 8px 10px; }
+  #hop-mat { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
+  #hop-mat button { border: 1px solid var(--vien); background: #fff; border-radius: 8px; padding: 7px 0; font: inherit; font-size: 13px; cursor: pointer; }
+  #hop-mat button.bat { background: var(--nhan); border-color: var(--nhan); color: #fff; }
+  #hop .hang { display: grid; grid-template-columns: 1fr 40px; align-items: center; gap: 8px; margin-top: 6px; }
+  #hop input[type=range] { width: 100%; height: 30px; accent-color: var(--nhan); }
+  #hop-lai { height: 34px; padding: 0 !important; font-size: 18px !important; }
+  #hop-so { font-size: 13px; color: var(--phu); text-align: center; min-height: 18px; }
+  #nhan { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+  .nh { position: absolute; left: 0; top: 0; white-space: nowrap; font-size: 12px; line-height: 1; will-change: transform; }
+  .nh.bong { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid #c2255c; background: #fff; color: #c2255c; display: grid; place-items: center; font-weight: 600; }
+  .nh.kc { color: #c2255c; background: rgba(255,255,255,.8); padding: 2px 4px; border-radius: 3px; font-size: 11px; }
+  .nh.cd { color: #0b5cad; background: rgba(255,255,255,.9); padding: 3px 6px; border-radius: 4px; border-left: 3px solid #0b5cad; font-weight: 600; }
+  .nh.cd small { font-weight: 400; color: var(--phu); margin-left: 4px; }
+  #thong-tin { position: fixed; left: 16px; top: 56px; width: min(300px, calc(100vw - 32px)); background: var(--the); border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,.18); padding: 10px 12px; font-size: 13px; }
+  #thong-tin table { border-collapse: collapse; width: 100%; margin-top: 6px; }
+  #thong-tin td { padding: 3px 4px; border-top: 1px solid var(--vien); vertical-align: top; }
+  #thong-tin td:first-child { color: var(--phu); width: 42%; }
+  #nhan-do, #goi-y { position: fixed; top: 56px; right: 16px; background: #d6336c; color: #fff; padding: 6px 12px; border-radius: 8px; font-weight: 600; }
+  #goi-y:empty { display: none; }
+  #goi-y { background: var(--the); color: var(--chu); font-weight: 400; }
+  #tai { position: fixed; inset: 0; display: grid; place-items: center; background: var(--nen); font-size: 16px; color: var(--phu); text-align: center; padding: 16px; }
+  #tai-anh { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  #tai-hop { position: relative; background: var(--the); padding: 12px 18px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,.2); min-width: 230px; max-width: 86vw; color: var(--chu); }
+  #tai-thanh { height: 6px; border-radius: 3px; background: var(--vien); margin-top: 8px; overflow: hidden; }
+  #tai-thanh i { display: block; height: 100%; width: 0; background: var(--nhan); transition: width .2s; }
+  footer { position: fixed; right: 8px; top: 8px; font-size: 10px; color: var(--phu); max-width: 46vw; text-align: right; pointer-events: none; }
+  [hidden] { display: none !important; }
+  #meo { position: fixed; left: 50%; top: 38%; transform: translateX(-50%); background: rgba(31,35,41,.82); color: #fff; padding: 10px 16px; border-radius: 10px; font-size: 14px; text-align: center; pointer-events: none; line-height: 1.6; }
+  @media (pointer: coarse) { nav button { min-height: 48px; } #hop-mat button { padding: 10px 0; } #ds-scene button, #ds-tang button { padding: 11px 12px; } #ds-tag label { padding: 9px 0; } }
+  @media (max-width: 700px) {
+    nav button { min-width: 44px; padding: 6px 5px; font-size: 10.5px; white-space: nowrap; }
+    .bang { right: 8px; left: 8px; width: auto; bottom: calc(max(12px, env(safe-area-inset-bottom)) + 72px); max-height: 45vh; }
+    #hop { left: 8px; }
+    .nh { font-size: 11px; }
+    .nh.bong { width: 20px; height: 20px; }
+    .nh.cd small { display: none; }
+    footer { display: none; }
+  }
+</style>
+</head>
+<body>
+<div id="khung"><div id="nhan"></div></div>
+<header><div id="ten">NHA PANEL</div><div id="cty" hidden><img id="cty-logo" alt="" hidden><span id="cty-ten"></span><a id="cty-dt" hidden></a></div></header>
+<footer>Bản nháp do AI lập — kỹ sư/KTS có chứng chỉ hành nghề kiểm tra và ký trước khi sử dụng.</footer>
+<div id="thong-tin" hidden></div>
+<div id="goi-y"></div>
+<div id="meo" hidden>1 ngón: xoay &nbsp;·&nbsp; 2 ngón: phóng to, dời<br>Chạm vào khối để xem thông tin</div>
+<div id="nhan-do" hidden></div>
+
+<section id="bang-tag" class="bang" hidden><h3>Lớp (tag) — bật / tắt</h3><div id="ds-tag"></div></section>
+<section id="bang-scene" class="bang" hidden><h3 id="tieu-tang" hidden>Xem mặt bằng từng tầng</h3><div id="ds-tang"></div><h3 id="tieu-scene">Góc nhìn đặt sẵn</h3><div id="ds-scene"></div></section>
+<section id="hop" class="bang" hidden>
+  <div id="hop-mat">
+    <button data-mat="3">Đỉnh</button><button data-mat="2">Đáy</button><button data-mat="5">Trước</button>
+    <button data-mat="4">Sau</button><button data-mat="0">Trái</button><button data-mat="1">Phải</button>
+  </div>
+  <div class="hang"><input type="range" id="hop-truot"><button id="hop-lai" title="Đặt lại hộp">↺</button></div>
+  <div id="hop-so"></div>
+</section>
+
+<nav>
+  <button id="nut-nha" title="Nhìn toàn bộ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Toàn bộ</button>
+  <button id="nut-hop" title="Hộp cắt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg>Hộp cắt</button>
+  <button id="nut-tag" title="Lớp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg>Lớp</button>
+  <button id="nut-scene" title="Góc nhìn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 10l4-2v8l-4-2"/></svg>Góc nhìn</button>
+  <button id="nut-truc" class="bat" title="Lưới trục, cao độ" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7v14M17 7v14M3 12h18M3 18h18"/><circle cx="7" cy="4.5" r="2.5"/><circle cx="17" cy="4.5" r="2.5"/></svg>Trục</button>
+  <button id="nut-do" title="Đo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17L17 3l4 4L7 21z"/><path d="M7 13l2 2M10 10l2 2M13 7l2 2"/></svg>Đo</button>
+  <button id="nut-net" class="bat" title="Nét cạnh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16"/></svg>Nét</button>
+</nav>
+<div id="tai">
+<img id="tai-anh" src="xem-truoc.jpg" alt="" onerror="this.remove()">
+<div id="tai-hop"><div id="tai-chu">Đang tải mô hình… <span id="tai-pt"></span></div><div id="tai-thanh"><i></i></div></div>
+</div>
+<script type="module" src="web3d.js"></script>
+</body>
+</html>
