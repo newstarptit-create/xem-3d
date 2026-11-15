@@ -1,0 +1,62 @@
+{
+  "ten": "Nhà mẫu thử",
+  "ngay": "2026-11-15 16:47",
+  "don_vi": "m",
+  "truc": "Y lên",
+  "tags": [
+    {
+      "ten": "A. WALL"
+    },
+    {
+      "ten": "A. WINDOW"
+    },
+    {
+      "ten": "S. COLUMN"
+    },
+    {
+      "ten": "S. SLAB"
+    }
+  ],
+  "scenes": [
+    {
+      "ten": "Mat tien",
+      "eye": [
+        4.0,
+        1.6,
+        15.0
+      ],
+      "target": [
+        4.0,
+        1.6,
+        -0.0
+      ],
+      "fov": 30.0,
+      "tag_an": [
+        "A. WALL"
+      ]
+    }
+  ],
+  "hop": {
+    "min": [
+      0.0,
+      0.0,
+      -4.2
+    ],
+    "max": [
+      8.2,
+      3.1,
+      0.1
+    ]
+  },
+  "so_lieu": {
+    "nut": 13,
+    "mesh": 4,
+    "vat_lieu": 3,
+    "anh": 1,
+    "tam_giac": 48,
+    "canh": 48
+  },
+  "kem_thep": false,
+  "nen": "meshopt",
+  "ghi_chu": "Bản nháp do AI lập — kỹ sư/KTS có chứng chỉ hành nghề kiểm tra và ký trước khi sử dụng."
+}
