@@ -1,0 +1,41 @@
+{
+  "ten": "cau thang sat",
+  "ngay": "2026-11-19 12:51",
+  "ma": 1795067493,
+  "don_vi": "m",
+  "tags": [
+
+  ],
+  "scenes": [
+
+  ],
+  "hop": {
+    "min": [
+      0.0,
+      0.0,
+      -1.9
+    ],
+    "max": [
+      2.8,
+      3.5772,
+      0.0
+    ]
+  },
+  "so_lieu": {
+    "nut": 66,
+    "mesh": 11,
+    "vat_lieu": 1,
+    "anh": 0,
+    "tam_giac": 200,
+    "canh": 183
+  },
+  "z0": 0.0,
+  "kem_thep": false,
+  "nen": "meshopt",
+  "anh": "xem-truoc.jpg",
+  "muc": {
+    "muc": "nhe",
+    "chu": "NHẸ (điện thoại tải 0.0 MB, 0 nghìn tam giác)"
+  },
+  "ghi_chu": "Bản nháp do AI lập — kỹ sư/KTS có chứng chỉ hành nghề kiểm tra và ký trước khi sử dụng."
+}
