@@ -1,7 +1,7 @@
 {
   "ten": "tan phuc - AI building",
-  "ngay": "2026-11-21 19:53",
-  "ma": 1795265613,
+  "ngay": "2026-11-21 22:31",
+  "ma": 1795275071,
   "don_vi": "m",
   "tags": [
     {
@@ -69,12 +69,12 @@
     ]
   },
   "so_lieu": {
-    "nut": 13241,
-    "mesh": 1382,
+    "nut": 11815,
+    "mesh": 925,
     "vat_lieu": 14,
     "anh": 0,
-    "tam_giac": 62086,
-    "canh": 31306
+    "tam_giac": 41930,
+    "canh": 20310
   },
   "truc": {
     "x": [
@@ -124,7 +124,7 @@
   "anh": "xem-truoc.jpg",
   "muc": {
     "muc": "nhe",
-    "chu": "NHẸ (điện thoại tải 2.9 MB, 62 nghìn tam giác)"
+    "chu": "NHẸ (điện thoại tải 2.4 MB, 42 nghìn tam giác)"
   },
   "ghi_chu": "Bản nháp do AI lập — kỹ sư/KTS có chứng chỉ hành nghề kiểm tra và ký trước khi sử dụng."
 }

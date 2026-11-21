@@ -60,6 +60,17 @@
   #thong-tin table { border-collapse: collapse; width: 100%; margin-top: 6px; }
   #thong-tin td { padding: 3px 4px; border-top: 1px solid var(--vien); vertical-align: top; }
   #thong-tin td:first-child { color: var(--phu); width: 42%; }
+  /* Ô thông tin cấu kiện (Chủ tịch 21/11/2026 Q64): loại, tên, tầng, khối lượng, thép theo Ø — không giá */
+  #thong-tin .loai { display: inline-block; background: #fff1e6; color: #c25e00; font-weight: 600; font-size: 12px; padding: 1px 8px; border-radius: 10px; }
+  #thong-tin .ten { display: block; font-size: 15px; font-weight: 700; margin: 4px 22px 0 0; }
+  #thong-tin .phu { color: var(--phu); font-size: 12.5px; margin-top: 1px; }
+  #thong-tin .muc { margin-top: 8px; font-size: 11.5px; font-weight: 700; color: var(--phu); text-transform: uppercase; letter-spacing: .03em; }
+  #thong-tin .muc + table { margin-top: 2px; }
+  #thong-tin td.so { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; color: var(--chu); width: auto; }
+  #thong-tin td.dv { color: var(--phu); width: 30px; padding-left: 4px; white-space: nowrap; }
+  #thong-tin.ck td:first-child { width: auto; color: var(--chu); }
+  #thong-tin .dong { position: absolute; right: 8px; top: 6px; color: var(--phu); font-size: 16px; line-height: 1; }
+  #thong-tin .keo { display: none; }
   #nhan-do, #goi-y { position: fixed; top: 56px; right: 16px; background: #d6336c; color: #fff; padding: 6px 12px; border-radius: 8px; font-weight: 600; }
   #goi-y:empty { display: none; }
   #goi-y { background: var(--the); color: var(--chu); font-weight: 400; }
@@ -80,6 +91,9 @@
     .nh.bong { width: 20px; height: 20px; }
     .nh.cd small { display: none; }
     footer { display: none; }
+    /* điện thoại: ô thông tin trượt lên từ dưới (Q64) */
+    #thong-tin, body.co-cty #thong-tin { left: 0; right: 0; top: auto; bottom: 0; width: auto; border-radius: 16px 16px 0 0; max-height: 55vh; overflow: auto; padding-bottom: max(14px, env(safe-area-inset-bottom)); z-index: 5; }
+    #thong-tin .keo { display: block; width: 40px; height: 4px; border-radius: 2px; background: var(--vien); margin: 0 auto 8px; }
   }
 </style>
 </head>
