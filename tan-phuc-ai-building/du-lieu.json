@@ -1,0 +1,130 @@
+{
+  "ten": "tan phuc - AI building",
+  "ngay": "2026-11-21 19:53",
+  "ma": 1795265613,
+  "don_vi": "m",
+  "tags": [
+    {
+      "ten": "A. FINISHING FLOOR"
+    },
+    {
+      "ten": "A. FINISHING WALL"
+    },
+    {
+      "ten": "A. WALL"
+    },
+    {
+      "ten": "DATHOUZZ ROOF – Khung đỡ mái"
+    },
+    {
+      "ten": "MNP Ngói lợp"
+    },
+    {
+      "ten": "MNP Phụ kiện nóc"
+    },
+    {
+      "ten": "S. BEAM"
+    },
+    {
+      "ten": "S. COLUMN"
+    },
+    {
+      "ten": "S. FOUNDATION"
+    },
+    {
+      "ten": "S. REBAR"
+    },
+    {
+      "ten": "S. SLAB"
+    },
+    {
+      "ten": "m_brick#1"
+    },
+    {
+      "ten": "m_cladding"
+    },
+    {
+      "ten": "m_concrete#1"
+    },
+    {
+      "ten": "m_flooring"
+    },
+    {
+      "ten": "m_sand"
+    }
+  ],
+  "scenes": [
+
+  ],
+  "hop": {
+    "min": [
+      -0.6034,
+      -0.3,
+      -7.607
+    ],
+    "max": [
+      5.9534,
+      6.37,
+      0.514
+    ]
+  },
+  "so_lieu": {
+    "nut": 13241,
+    "mesh": 1382,
+    "vat_lieu": 14,
+    "anh": 0,
+    "tam_giac": 62086,
+    "canh": 31306
+  },
+  "truc": {
+    "x": [
+      {
+        "ten": "1",
+        "v": 0.1
+      },
+      {
+        "ten": "2",
+        "v": 2.675
+      },
+      {
+        "ten": "3",
+        "v": 5.25
+      }
+    ],
+    "y": [
+      {
+        "ten": "A",
+        "v": 0.1
+      },
+      {
+        "ten": "B",
+        "v": 3.75
+      },
+      {
+        "ten": "C",
+        "v": 7.4
+      }
+    ]
+  },
+  "cao_do": [
+    {
+      "ten": "Tầng 1",
+      "z": 0.0,
+      "chu": "±0.000"
+    },
+    {
+      "ten": "Tầng 2",
+      "z": 4.15,
+      "chu": "+4.150"
+    }
+  ],
+  "z0": 0.0,
+  "kem_thep": true,
+  "nen": "meshopt",
+  "anh": "xem-truoc.jpg",
+  "muc": {
+    "muc": "nhe",
+    "chu": "NHẸ (điện thoại tải 2.9 MB, 62 nghìn tam giác)"
+  },
+  "ghi_chu": "Bản nháp do AI lập — kỹ sư/KTS có chứng chỉ hành nghề kiểm tra và ký trước khi sử dụng."
+}
